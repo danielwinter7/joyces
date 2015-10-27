@@ -1,4 +1,3 @@
 # joyces
 FH RIA Projekt
-Members
-Laura Peter, Heike Korb, Raffael Vörösmarty, Daniel Winter
+Members: Laura Peter, Heike Korb, Raffael Vörösmarty, Daniel Winter
