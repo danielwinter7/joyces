@@ -1,5 +1,10 @@
-$bg-color: #123456;
+@import "{}/client/styles/variables.scss";
 
 body {
 	background-color: $bg-color;
+	color: white;
+
+	a {
+		color: white;
+	}
 }
