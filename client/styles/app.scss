@@ -1,8 +1,11 @@
 @import "{}/client/styles/variables.scss";
+@import "{}/client/styles/mixins.scss";
 @import "{poetic:materialize-scss}/sass/materialize.scss";
 
 body {
-
+    font-family: Roboto, sans-serif;
+    background-color: $brand-primary;
+    color: white;
 	.media-object {width: 100%; height: auto;}
 	.media-body {float: left; }
 	.media {width: 100%; }
@@ -10,5 +13,10 @@ body {
 	ul {list-style-type: none; padding-left: none; }
 	li {padding-left: none; }
 
+}
+
+// Danger and error appear as red
+.btn-danger {
+  @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
 }
 

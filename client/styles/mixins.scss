@@ -1,0 +1,5 @@
+@mixin button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border) {
+  color: $btn-danger-color;
+  background-color: $btn-danger-bg;
+  border-color: $btn-danger-border;
+}

@@ -3,60 +3,12 @@
 </template>
 
 <template name="index">
-  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#question"><i class="fa fa-plus"></i> Create new survey </button>
+  <button type="button" class="waves-effect waves-light btn btn-danger"><i class="fa fa-plus"></i> Create new survey </button>
 
-    <!-- MODAL Formular: Wird angezeigt bei "+Create new survey" Button -->
-    <div id="question" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Question</h4>
-          </div>
-          <div class="modal-body">
-            <form>
-            <div class="form-group">
-              <label for="question">Your Question</label>
-              <input type="text" class="form-control" id="question" placeholder="Your Question here... ">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputFile">Upload Images</label>
-              <input type="file" id="picture1" class="fileupload">
-              <input type="file" id="picture2" class="fileupload">
-              <p class="help-block">Please upload 2 Images for your question. </p>
-            </div>
-            <div class="checkbox">
-              <label>
-                  <input type="checkbox"> I have all rights for the pictures. 
-              </label>
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-        </form>
+  <a class="btn"><i class="material-icons left">cloud</i>button</a>
 
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
 
-    <!-- MODAL ENDE -->
-
-  <h2>Latest surveys</h2>
-  <ul id="survey_list">
-      <li v-for="survey in surveys" class="col-md-4">  
-        <div class="media" >
-            <div class="media-left">
-              <a href="#">
-                  <img class="media-object" src="http://www.blogtogo.de/wp-content/uploads/wallpaper-2446558.jpeg" alt=" [[ survey.title ]] ">
-              </a>
-           </div>
-            <div class="media-body">
-               <h3 class="media-heading"> [[ survey.title ]] </h3>
-               <p> [[ survey.question ]]</p>
-            </div>
-        </div>
-      </li>
-    </ul> 
-
+    <h2>Latest Questions</h2>
 </template>
 
 <template name="main">
