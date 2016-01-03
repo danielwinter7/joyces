@@ -15,6 +15,10 @@ body {
 
 }
 
+.btn i {
+	font-size: 1rem !important;
+}
+
 // Danger and error appear as red
 .btn-danger {
   @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
