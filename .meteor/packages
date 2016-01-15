@@ -27,3 +27,5 @@ fortawesome:fontawesome
 poetic:materialize-scss
 ecmascript
 blaze-html-templates
+momentjs:moment
+jagi:astronomy-validators

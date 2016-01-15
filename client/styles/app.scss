@@ -29,6 +29,10 @@ body {
   @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
 }
 
+// Danger and error appear as red
+.btn-success {
+  @include button-variant(white, $brand-primary, white);
+}
 
 .jo {
 
@@ -42,21 +46,48 @@ body {
 
 	}
 
+	input[type=text].valid {
+		border-bottom: 1px solid $brand-primary;
+	}
+
 }
 
-
 .expand-transition {
-  transition: all .3s ease;
-  height: 30px;
+  transition: all .35s ease-in-out;
   padding: 10px;
-  background-color: #eee;
+  height: auto;
+  color: white;
+  background-color: $brand-danger;
   overflow: hidden;
+  top: -15px;
 }
 
 /* .expand-enter defines the starting state for entering */
 /* .expand-leave defines the ending state for leaving */
 .expand-enter, .expand-leave {
-  height: 0;
-  padding: 0 10px;
-  opacity: 0;
+	transition: all 1s ease-in-out;
+	height: 0;
+	padding: 0 10px;
+	opacity: 0;
+}
+
+
+.fade-transition {
+	transition: all .35s ease-in-out;
+	padding: 10px;
+	height: auto;
+	color: $brand-font-color;
+	background-color: rgba(255,255,255,.9);
+	top: 35px;
+	position: absolute;
+	width: 97%;
+}
+
+/* .expand-enter defines the starting state for entering */
+/* .expand-leave defines the ending state for leaving */
+.fade-enter, .fade-leave {
+	transition: all .35s ease-in-out;
+	height: 0;
+	padding: 0 10px;
+	opacity: 0;
 }

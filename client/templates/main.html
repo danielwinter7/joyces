@@ -2,17 +2,21 @@
   <title>Joyces - Create your own survey</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
 </head>
 
 <template name="header">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <i id="btn__help" class="small material-icons pull-right" href="#">info_outline</i>
-          
-          <div id="content__help">
-            Help
-          </div>
+            <div id="help-wrapper">
+              <i id="btnCreateHelp" v-on:click="help = !help" class="small material-icons pull-right" href="#">info_outline</i>
+              
+              <div id="content__help" v-show="help" transition="fade">
+                Help
+              </div>
+            </div>
 
           <div class="jo__logo">
             <img src="/images/logo-final.svg" alt="Joyces Logo">
@@ -23,21 +27,28 @@
 </template>
 
 <template name="index">
-      <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-                   
-          <div id="survey-wrapper">
-            <button id="btnCreateSurvey" v-on:click="showSurvey" type="button" class="waves-effect waves-light btn btn-block btn-large btn-danger"><i class="fa fa-plus fa-fw"></i> Create new survey </button>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+                 
+        <div id="survey-wrapper">
+          <button id="btnCreateSurvey" v-on:click="survey = !survey" type="button" class="waves-effect waves-light btn btn-block btn-large btn-danger"><i class="fa fa-plus fa-fw"></i> Create new survey </button>
 
-            <div class="input-field" id="survey-question" v-show="showQuestion">
-              <i class="material-icons prefix">question_answer</i>
-              <input placeholder="What do you like to find out?" v-model="question" id="question" type="text" class="validate">
-            </div>
+          <div class="input-field" id="survey-question" v-show="survey" transition="expand">
+            <i class="material-icons prefix">question_answer</i>
+
+            <form v-on:submit="handleIt">
+              <input placeholder="What do you like to find out?" v-model="question.title" id="question" type="text" class="validate">
+
+              <div class="col-sm-6 col-sm-offset-3">
+                <button name="button" class="waves-effect waves-light btn btn-block btn-success">Create</button>
+              </div>
+            </form>
           </div>
-
         </div>
+
       </div>
+    </div>
   </div>
   <h2>Latest Questions</h2>
 </template>
@@ -49,3 +60,8 @@
         <!--main-->
         {{> Template.dynamic template=content}}
 </template>
+
+
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-validator/1.4.4/vue-validator.js"></script>
+</body>
