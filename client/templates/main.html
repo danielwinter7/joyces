@@ -1,30 +1,51 @@
 <head>
   <title>Joyces - Create your own survey</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <template name="header">
-  <i class="small material-icons pull-right" href="#">info_outline</i>
-  <h1>LOGO</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <i id="btn__help" class="small material-icons pull-right" href="#">info_outline</i>
+          
+          <div id="content__help">
+            Help
+          </div>
+
+          <div class="jo__logo">
+            <img src="/images/logo-final.svg" alt="Joyces Logo">
+          </div>
+        </div>
+      </div>
+  </div>
 </template>
 
 <template name="index">
-  <button type="button" class="waves-effect waves-light btn btn-danger"><i class="fa fa-plus fa-fw"></i> Create new survey </button>
+      <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+                   
+          <div id="survey-wrapper">
+            <button id="btnCreateSurvey" v-on:click="showSurvey" type="button" class="waves-effect waves-light btn btn-block btn-large btn-danger"><i class="fa fa-plus fa-fw"></i> Create new survey </button>
+
+            <div class="input-field" id="survey-question" v-show="showQuestion">
+              <i class="material-icons prefix">question_answer</i>
+              <input placeholder="What do you like to find out?" v-model="question" id="question" type="text" class="validate">
+            </div>
+          </div>
+
+        </div>
+      </div>
+  </div>
   <h2>Latest Questions</h2>
 </template>
 
 <template name="main">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
         <!--header-->
         {{> Template.dynamic template=top}}
 
         <!--main-->
         {{> Template.dynamic template=content}}
-
-      </div>
-    </div>
-  </div>
-  
 </template>

@@ -2,6 +2,11 @@
 @import "{}/client/styles/mixins.scss";
 @import "{poetic:materialize-scss}/sass/materialize.scss";
 
+$smartphone:	"(max-width: 480px)";
+$phablet:		"(min-width: 481px) and (max-width: 767px)";
+$tablet: 		"(min-width: 768px) and (max-width: 1023px)";
+$desktop: 		"(min-width: 1024px)";
+
 body {
     font-family: Roboto, sans-serif;
     background-color: $brand-primary;
@@ -24,3 +29,34 @@ body {
   @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
 }
 
+
+.jo {
+
+	&__logo {
+		margin: 1rem auto 0;
+		width: 20%;
+
+		@media #{$smartphone} {
+			width: 75%;
+		}
+
+	}
+
+}
+
+
+.expand-transition {
+  transition: all .3s ease;
+  height: 30px;
+  padding: 10px;
+  background-color: #eee;
+  overflow: hidden;
+}
+
+/* .expand-enter defines the starting state for entering */
+/* .expand-leave defines the ending state for leaving */
+.expand-enter, .expand-leave {
+  height: 0;
+  padding: 0 10px;
+  opacity: 0;
+}
