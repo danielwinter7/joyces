@@ -16,8 +16,7 @@ Template.index.onRendered(function () {
 	    },
 	    methods: {
 	      handleIt: function (e) {
-	        if(!this.question.title)
-	          return alert('Title can\'t be blank!');
+	        if(!question.title)  alert('Title can\'t be blank!');
 
 	        // this.project.set('title', this.project.title);
 
