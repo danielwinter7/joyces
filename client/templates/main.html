@@ -35,12 +35,47 @@
           <button id="btnCreateSurvey" v-on:click="survey = !survey" type="button" class="waves-effect waves-light btn btn-block btn-large btn-danger"><i class="fa fa-plus fa-fw"></i> Create new survey </button>
 
           <div class="input-field" id="survey-question" v-show="survey" transition="expand">
-            <i class="material-icons prefix">question_answer</i>
+            <!-- <i class="material-icons prefix">question_answer</i> -->
 
             <form v-on:submit="handleIt">
-              <input placeholder="What do you like to find out?" v-model="question.title" id="question" type="text" class="validate">
+              <span class="error" v-show="!question.title">
+                Enter a question
+              </span>
+              <input placeholder="What do you like to find out?" v-model="question.title" id="question" type="text" name="question" class="validate" length="50" maxlength="50">
 
-              <div class="col-sm-6 col-sm-offset-3">
+              {{> upload_bootstrap contentType='images' fileTypes='.jpg' formData=handleIt}}
+
+
+              <!-- <div class="file-field input-field">
+                <span class="error" v-show="!question.pictureone">
+                  Please insert the first picture!
+                </span>
+                <div class="btn">
+                  <span>Question 1</span>
+                  <input type="file" name="pictureone" v-model="question.pictureone" accept="image/*">
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate btn-success" type="text">
+                </div>
+              </div>
+
+
+              <div class="file-field input-field">
+                <span class="error" v-show="!question.picturetwo">
+                  Please insert the second picture!
+                </span>
+                <div class="btn">
+                  <span>Question 2</span>
+                  <input type="file" name="picturetwo" v-model="question.picturetwo" accept="image/*">
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate btn-success" type="text">
+                </div>
+              </div> -->
+
+              <!-- <div class="col-sm-6 col-sm-offset-3" v-show="question.title && question.pictureone && question.picturetwo"> -->
+
+                <div class="col-sm-6 col-sm-offset-3" v-show="question.title">
                 <button name="button" class="waves-effect waves-light btn btn-block btn-success">Create</button>
               </div>
             </form>
@@ -51,6 +86,20 @@
     </div>
   </div>
   <h2>Latest Questions</h2>
+
+  <ul id="question_list">
+    <li v-if="loader">
+      Loading...
+    </li>
+    <li v-for="question in questions" v-cloak>
+      <p>
+        [[question.title]]
+      </p>
+      <small>Created: [[ question.created() ]]</small><br>
+      <small>Last Updated: [[ question.updated() ]]</small>
+      <a href="/question/[[question._id]]">show</a>
+    </li>
+  </ul>
 </template>
 
 <template name="main">
@@ -60,8 +109,3 @@
         <!--main-->
         {{> Template.dynamic template=content}}
 </template>
-
-
-<body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-validator/1.4.4/vue-validator.js"></script>
-</body>
