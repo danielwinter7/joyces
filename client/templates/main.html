@@ -92,7 +92,9 @@
 
 <template name="question_list">
 
-  <div class="ql__header">Latest Questions</div>
+  <div class="ql__header">Latest Questions
+    <span v-on:click="survey = !survey"><i class="fa fa-plus-circle fa-fw fa-lg pull-right"></i></span>
+  </div>
 
   <div id="question_list">
     <div v-if="loader">
