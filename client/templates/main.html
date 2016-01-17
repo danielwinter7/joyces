@@ -2,8 +2,6 @@
   <title>Joyces - Create your own survey</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-
 </head>
 
 <template name="header">
@@ -85,21 +83,30 @@
       </div>
     </div>
   </div>
-  <h2>Latest Questions</h2>
 
-  <ul id="question_list">
-    <li v-if="loader">
+
+  {{> question_list}}
+  
+</template>
+
+
+<template name="question_list">
+
+  <div class="ql__header">Latest Questions</div>
+
+  <div id="question_list">
+    <div v-if="loader">
       Loading...
-    </li>
-    <li v-for="question in questions" v-cloak>
-      <p>
-        [[question.title]]
-      </p>
-      <small>Created: [[ question.created() ]]</small><br>
-      <small>Last Updated: [[ question.updated() ]]</small>
-      <a href="/question/[[question._id]]">show</a>
-    </li>
-  </ul>
+    </div>
+      <div class="ql__image" v-for="question in questions" v-cloak>
+        <img src="/images/[[$index+1]].jpg" alt="">
+        <a href="/question/[[question._id]]" class="waves-effect waves-light btn btn-danger ql__image-voting"><i class="fa fa-plus fa-fw"></i>VOTE ME!</a>
+        <p class="ql__image-question">
+          <i class="fa fa-user fa-fw"></i> [[question.title]]
+        </p>
+      </div>
+  </div>
+
 </template>
 
 <template name="main">

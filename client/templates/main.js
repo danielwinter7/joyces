@@ -22,7 +22,6 @@ Template.index.onRendered(function () {
 
 	$('input#question').characterCounter();
 
-
 	var question = new Vue({
 		el: '#question_list',
 		data: {
@@ -37,6 +36,7 @@ Template.index.onRendered(function () {
 		  }
 		}
 	}); // Vue
+	
 
 	var survey = new Vue({
 	    el: '#survey-wrapper',
@@ -63,7 +63,7 @@ Template.index.onRendered(function () {
 		    });
 
 		    event.target.question.value = "";
-		    // $("input:file").clearInputs(true);
+		    $("input:file").clearInputs(true);
 
 	      	e.preventDefault();
 	    	}
