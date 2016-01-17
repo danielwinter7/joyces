@@ -101,9 +101,7 @@
       <div class="ql__image" v-for="question in questions" v-cloak>
         <img src="/images/[[$index+1]].jpg" alt="">
         <a href="/question/[[question._id]]" class="waves-effect waves-light btn btn-danger ql__image-voting"><i class="fa fa-plus fa-fw"></i>VOTE ME!</a>
-        <p class="ql__image-question">
-          <i class="fa fa-user fa-fw"></i> [[question.title]]
-        </p>
+        <div class="ql__image-question"><i class="fa fa-user fa-fw"></i> [[question.title]]</div>
       </div>
   </div>
 
