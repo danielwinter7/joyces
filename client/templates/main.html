@@ -12,7 +12,12 @@
               <i id="btnCreateHelp" v-on:click="help = !help" class="small material-icons pull-right" href="#">info_outline</i>
               
               <div id="content__help" v-show="help" transition="fade">
-                Help
+                <h5>Welcome to Joyces</h5>
+                <p>Can’t decide which shoes to buy, which ice cream to eat or which girl / boy to date? 
+                Well, no worries - Joyces is here to help:</p>
+                <p>1) Just click the "Create new survey" button.</p>
+                <p>2) Insert your question and upload two pics, each for one of your options.</p>
+                <p>3) Voting-Time: Share your survey with your friends and wait for their respondses!</p>
               </div>
             </div>
 
@@ -41,7 +46,7 @@
               </span>
               <input placeholder="What do you like to find out?" v-model="question.title" id="question" type="text" name="question" class="validate" length="50" maxlength="50">
 
-              {{> upload_bootstrap contentType='images' fileTypes='.jpg' formData=handleIt}}
+              {{> upload_bootstrap contentType='images' fileTypes='.jpg,.png' formData=specificFormData}}
 
 
               <!-- <div class="file-field input-field">
@@ -93,7 +98,7 @@
 <template name="question_list">
 
   <div class="ql__header">Latest Questions
-    <span v-on:click="survey = !survey"><i class="fa fa-plus-circle fa-fw fa-lg pull-right"></i></span>
+    <span v-on:click="survey = !survey"><i class="fa fa-plus-circle fa-fw fa-2x pull-right"></i></span>
   </div>
 
   <div id="question_list">

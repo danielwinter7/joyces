@@ -1,5 +1,3 @@
-Meteor.subscribe("questions");
-
 Template.header.onRendered(function () {
 	var help = new Vue({
 	    el: '#help-wrapper',
@@ -7,15 +5,6 @@ Template.header.onRendered(function () {
 	        help: false
 	    }
 	})
-});
-
-Template.index.helpers({
-  myFormData: function() {
-    return { directoryName: 'images', prefix: this._id, _id: this._id }
-  },
-  filesToUpload: function() {
-    return Uploader.info.get();
-  }
 });
 
 Template.index.onRendered(function () {
@@ -63,9 +52,11 @@ Template.index.onRendered(function () {
 		    });
 
 		    event.target.question.value = "";
-		    $("input:file").clearInputs(true);
-
+		    //$("input:file").clearInputs(true);
+		    FlowRouter.go('questions_summery');
 	      	e.preventDefault();
+
+	      	
 	    	}
 		}
 
@@ -74,6 +65,8 @@ Template.index.onRendered(function () {
 
 Meteor.startup(function() {
   Uploader.finished = function(index, file) {
+  	//var question = e.target.question.value;
     Uploads.insert(file);
+    console.log(index);
   }
 });

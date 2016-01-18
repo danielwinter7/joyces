@@ -1,7 +1,7 @@
 Meteor.startup(function () {
   UploadServer.init({
     tmpDir: process.env.PWD + '/.uploads/tmp',
-    uploadDir: process.env.PWD + '/.uploads/',
+    uploadDir: process.env.PWD + '/public/uploads/',
     checkCreateDirectories: true,
     getDirectory: function(fileInfo, formData) {
       if (formData && formData.directoryName != null) {
@@ -15,7 +15,7 @@ Meteor.startup(function () {
       }
       return fileInfo.name;
     },
-    finished: function(fileInfo, formData) {
+    finished: function(e, fileInfo, formData) {
       console.log(formData);
       if (formData && formData._id != null) {
         Items.update({_id: formData._id}, { $push: { uploads: fileInfo }});

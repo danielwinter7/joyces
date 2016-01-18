@@ -1,23 +1,22 @@
 <template name="question_detail">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12">
 
-          <div id="question_detail">
-            
-              
-                <p>
-                  [[* questionId]]
-                </p>
+  <a href="/" class="waves-effect waves-light btn btn-danger qd__go-back"><i class="fa fa-caret-left fa-fw"></i>GO BACK</a>
 
-                <p>
-                  [[question.title]]
-                </p>
-            
+  <div id="question_detail" class="qd__question"><i class="fa fa-user fa-fw"></i> [[question.title]]</div>             
 
-          </div>
 
-        </div>
-      </div>
-  </div>
+  <div id="upload_images" class="ui__wrapper" v-for="upload in uploads" v-cloak>
+    <img v-bind:src="upload.url">
+  </div> 
+
+</template>
+
+
+
+<template name="detail">
+        <!--header-->
+        {{> Template.dynamic template=top}}
+
+        <!--main-->
+        {{> Template.dynamic template=content}}
 </template>
