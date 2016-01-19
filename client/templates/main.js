@@ -7,7 +7,11 @@ Template.header.onRendered(function () {
 	})
 });
 
-Template.index.onRendered(function () {
+Template.question_index.helpers({
+
+});
+
+Template.question_index.onRendered(function () {
 
 	$('input#question').characterCounter();
 
@@ -37,26 +41,16 @@ Template.index.onRendered(function () {
 	    },
 	    methods: {
 	      handleIt: function (e) {
-
+	      	
 	      	var question = e.target.question.value;
-			//var pictureone = e.target.pictureone.value.replace(/C:\\fakepath\\/i, '')
-	      	// var pictureone = e.target.pictureone.value.split('\\').pop();
-
-	      	// var picturetwo = e.target.picturetwo.value.split('\\').pop();
-
 	      	Questions.insert({
 		        title: question,
-		        // pictureone: pictureone,
-		        // picturetwo: picturetwo,
-		        createdAt: new Date() // current time
+		        createdAt: new Date()
 		    });
 
 		    event.target.question.value = "";
-		    //$("input:file").clearInputs(true);
-		    FlowRouter.go('questions_summery');
-	      	e.preventDefault();
-
-	      	
+		    FlowRouter.go('questions_summary');
+		    e.preventDefault();
 	    	}
 		}
 

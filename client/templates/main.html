@@ -2,6 +2,8 @@
   <title>Joyces - Create your own survey</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
 
 <template name="header">
@@ -29,7 +31,7 @@
   </div>
 </template>
 
-<template name="index">
+<template name="question_index">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -47,36 +49,6 @@
               <input placeholder="What do you like to find out?" v-model="question.title" id="question" type="text" name="question" class="validate" length="50" maxlength="50">
 
               {{> upload_bootstrap contentType='images' fileTypes='.jpg,.png' formData=specificFormData}}
-
-
-              <!-- <div class="file-field input-field">
-                <span class="error" v-show="!question.pictureone">
-                  Please insert the first picture!
-                </span>
-                <div class="btn">
-                  <span>Question 1</span>
-                  <input type="file" name="pictureone" v-model="question.pictureone" accept="image/*">
-                </div>
-                <div class="file-path-wrapper">
-                  <input class="file-path validate btn-success" type="text">
-                </div>
-              </div>
-
-
-              <div class="file-field input-field">
-                <span class="error" v-show="!question.picturetwo">
-                  Please insert the second picture!
-                </span>
-                <div class="btn">
-                  <span>Question 2</span>
-                  <input type="file" name="picturetwo" v-model="question.picturetwo" accept="image/*">
-                </div>
-                <div class="file-path-wrapper">
-                  <input class="file-path validate btn-success" type="text">
-                </div>
-              </div> -->
-
-              <!-- <div class="col-sm-6 col-sm-offset-3" v-show="question.title && question.pictureone && question.picturetwo"> -->
 
                 <div class="col-sm-6 col-sm-offset-3" v-show="question.title">
                 <button name="button" class="waves-effect waves-light btn btn-block btn-success">Create</button>
@@ -107,7 +79,8 @@
     </div>
       <div class="ql__image" v-for="question in questions" v-cloak>
         <img src="/images/[[$index+1]].jpg" alt="">
-        <a href="/question/[[question._id]]" class="waves-effect waves-light btn btn-danger ql__image-voting"><i class="fa fa-plus fa-fw"></i>VOTE ME!</a>
+        <a href="/question/[[question._id]]" class="waves-effect waves-light btn btn-danger ql__image-voting">  <i class="fa fa-plus fa-fw"></i>VOTE ME!
+        </a>
         <div class="ql__image-question"><i class="fa fa-user fa-fw"></i> [[question.title]]</div>
       </div>
   </div>

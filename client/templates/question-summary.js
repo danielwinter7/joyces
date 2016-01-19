@@ -1,21 +1,21 @@
 Meteor.subscribe("questions");
-Meteor.subscribe("uploads");
 
-Template.question_detail.onCreated( function () {
+
+Template.question_summary.onCreated( function () {
   this.autorun( () => {
     let questionId = FlowRouter.getParam('questionId');
     return this.subscribe('singleQuestion', questionId );
   });
 });
 
-Template.question_detail.onRendered(function () {
+Template.question_summary.onRendered(function () {
 
 	var questionId = FlowRouter.getParam('questionId');
 
-	var question = new Vue({
-		el: '#question_detail',
+	var qsummery = new Vue({
+		el: '.qs__wrapper',
 		data: {
-			questionId: questionId
+		  loader: true
 		},
 		ready: function () {
 		  return this.loader = false;
@@ -35,21 +35,6 @@ Template.question_detail.onRendered(function () {
 		  	goIndex: function() {
 	        	FlowRouter.go('home');
 			}
-		}
-	}); // Vue
-
-	var uploads = new Vue({
-		el: '#upload_images',
-		data: {
-		  loader: true
-		},
-		ready: function () {
-		  return this.loader = false;
-		},
-		sync: {
-		  uploads: function () {
-		    return Uploads.find({}, {limit: 2});
-		  }
 		}
 	}); // Vue
 
