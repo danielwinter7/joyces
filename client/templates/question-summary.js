@@ -1,14 +1,14 @@
 Meteor.subscribe("questions");
 
 
-Template.question_summary.onCreated( function () {
+Template.questions_summary.onCreated( function () {
   this.autorun( () => {
     let questionId = FlowRouter.getParam('questionId');
     return this.subscribe('singleQuestion', questionId );
   });
 });
 
-Template.question_summary.onRendered(function () {
+Template.questions_summary.onRendered(function () {
 
 	var questionId = FlowRouter.getParam('questionId');
 

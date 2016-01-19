@@ -1,13 +1,26 @@
 <template name="question_detail">
 
-  <a href="/" class="waves-effect waves-light btn btn-danger qd__go-back"><i class="fa fa-caret-left fa-fw"></i>GO BACK</a>
-
-  <div id="question_detail" class="qd__question"><i class="fa fa-user fa-fw"></i> [[question.title]]</div>             
+  <div id="question_detail" >
+	<a v-on:click="goIndex" class="waves-effect waves-light btn btn-danger qd__go-back"><i class="fa fa-caret-left fa-fw"></i>GO BACK</a>
+  	<div class="qd__question">
+  		<i class="fa fa-user fa-fw"></i> [[question.title]]
+  	</div>
+  </div>             
 
 
   <div id="upload_images" class="ui__wrapper" v-for="upload in uploads" v-cloak>
-    <img v-bind:src="upload.url">
-  </div> 
+<!--   	<p>[[* upload | json]]</p> -->
+    <img v-on:click="getVoices(upload._id)" v-bind:src="upload.url" v-bind:style="{ height: imageHeight+'px' }">
+  </div>
+	<!-- <div id="upload_images">
+	  <div class="ui__wrapper">
+	    <img src="/uploads/2.jpg" v-bind:style="{ height: imageHeight+'px' }">
+	  </div>
+
+	  <div class="ui__wrapper">
+	    <img src="/uploads/1.jpg" v-bind:style="{ height: imageHeight+'px' }">
+	  </div>
+	</div> -->
 
 </template>
 

@@ -9,3 +9,7 @@ Meteor.publish('singleQuestion', function(id){
 Meteor.publish('uploads', function() {
   return Uploads.find();
 });
+
+Meteor.publish('singleUploads', function() {
+  return Uploads.find({_id: id});
+});	

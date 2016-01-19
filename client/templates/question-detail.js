@@ -12,6 +12,10 @@ Template.question_detail.onRendered(function () {
 
 	var questionId = FlowRouter.getParam('questionId');
 
+	var docHeight = $( document ).height();
+	//30px of question at bottom
+	var imageHeight = (docHeight-30)/2;
+
 	var question = new Vue({
 		el: '#question_detail',
 		data: {
@@ -33,7 +37,9 @@ Template.question_detail.onRendered(function () {
 		},
 		methods: {
 		  	goIndex: function() {
+		  		
 	        	FlowRouter.go('home');
+	        	location.reload();
 			}
 		}
 	}); // Vue
@@ -41,7 +47,8 @@ Template.question_detail.onRendered(function () {
 	var uploads = new Vue({
 		el: '#upload_images',
 		data: {
-		  loader: true
+			questionId: questionId,
+			imageHeight: imageHeight
 		},
 		ready: function () {
 		  return this.loader = false;
@@ -50,6 +57,23 @@ Template.question_detail.onRendered(function () {
 		  uploads: function () {
 		    return Uploads.find({}, {limit: 2});
 		  }
+		},
+		methods: {
+			getVoices: function(key) {
+				var uploadId = Uploads.find(key);
+				var uploadVoices = uploadId.voices;
+				console.log(uploadVoices);
+			},
+
+			voting: function(key) {
+				console.log(key);
+				Uploads.update(key, {
+			        $set: {
+			        	voices: +1,
+			        	updateAt: new Date()
+			        }
+			    });
+			}
 		}
 	}); // Vue
 

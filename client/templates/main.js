@@ -1,3 +1,5 @@
+Meteor.subscribe("questions");
+
 Template.header.onRendered(function () {
 	var help = new Vue({
 	    el: '#help-wrapper',
@@ -8,12 +10,24 @@ Template.header.onRendered(function () {
 });
 
 Template.question_index.helpers({
+	questions: function () {
+		Questions.findOne(questionId);
+	}
+});
 
+
+Template.question_index.onCreated( function () {
+  this.autorun( () => {
+    let questionId = FlowRouter.getParam('questionId');
+    return this.subscribe('singleQuestion', questionId );
+  });
 });
 
 Template.question_index.onRendered(function () {
 
 	$('input#question').characterCounter();
+
+	var questionId = FlowRouter.getParam('questionId');
 
 	var question = new Vue({
 		el: '#question_list',
@@ -49,7 +63,7 @@ Template.question_index.onRendered(function () {
 		    });
 
 		    event.target.question.value = "";
-		    FlowRouter.go('questions_summary');
+		    FlowRouter.go('/questions-summary/'+questionId);
 		    e.preventDefault();
 	    	}
 		}
