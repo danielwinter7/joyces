@@ -3,6 +3,7 @@ Meteor.startup(function () {
     tmpDir: process.env.PWD + '/.uploads/tmp',
     uploadDir: process.env.PWD + '/public/uploads/',
     checkCreateDirectories: true,
+    voices: 0,
     getDirectory: function(fileInfo, formData) {
       if (formData && formData.directoryName != null) {
         return formData.directoryName;

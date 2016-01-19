@@ -5,22 +5,23 @@
   	<div class="qd__question">
   		<i class="fa fa-user fa-fw"></i> [[question.title]]
   	</div>
+
+	
+	
+
   </div>             
 
 
   <div id="upload_images" class="ui__wrapper" v-for="upload in uploads" v-cloak>
-<!--   	<p>[[* upload | json]]</p> -->
-    <img v-on:click="getVoices(upload._id)" v-bind:src="upload.url" v-bind:style="{ height: imageHeight+'px' }">
+	<div class="ui__wrapper-voices" v-bind:style="{ height: (imageHeight/100)*upload.voices+'px' }">
+		<div class="ui__wrapper-voices__counter"> <i class="fa fa-thumbs-o-up"></i> [[upload.voices]]
+			<!-- <span v-show="[[upload.voicesTogether]] != null">
+				[[ ((upload.voices/upload.voicesTogether)*100) ]]
+			</span> -->
+		</div>
+	</div>
+    <img v-on:click="voting(upload._id, upload.voices)" v-bind:src="upload.url" v-bind:style="{ height: imageHeight+'px' }">
   </div>
-	<!-- <div id="upload_images">
-	  <div class="ui__wrapper">
-	    <img src="/uploads/2.jpg" v-bind:style="{ height: imageHeight+'px' }">
-	  </div>
-
-	  <div class="ui__wrapper">
-	    <img src="/uploads/1.jpg" v-bind:style="{ height: imageHeight+'px' }">
-	  </div>
-	</div> -->
 
 </template>
 

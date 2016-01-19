@@ -31,10 +31,22 @@ body {
 
 // Danger and error appear as red
 .btn-success {
-  @include button-variant(white, $brand-primary, white);
+	margin-top: 15px;
+ 	@include button-variant(white, $brand-primary, white);
 }
 
-.jo {
+//upload plugin
+.upload-control, .progress-bar-success {
+	height: 45px;
+	line-height: 2.5;
+
+	@media #{$smartphone} {
+		font-size: 10px;
+		padding: 0;
+	}
+}
+
+.joyces {
 
 	&__logo {
 		margin: 1rem auto 0;
@@ -67,7 +79,6 @@ body {
 .expand-enter, .expand-leave {
 	transition: all 1s ease-in-out;
 	height: 0;
-	padding: 0 10px;
 	opacity: 0;
 }
 
@@ -89,7 +100,24 @@ body {
 .fade-enter, .fade-leave {
 	transition: all .35s ease-in-out;
 	height: 0;
-	padding: 0 10px;
+	opacity: 0;
+}
+
+
+.fadeplus-transition {
+	transition: all .35s ease-in-out;
+	padding: 10px 0;
+	color: $brand-font-color;
+  	height: auto;
+  	overflow: hidden;
+  	width: 100%;
+}
+
+/* .expand-enter defines the starting state for entering */
+/* .expand-leave defines the ending state for leaving */
+.fadeplus-enter, .fadeplus-leave {
+	transition: all .35s ease-in-out;
+	height: 0;
 	opacity: 0;
 }
 
@@ -105,6 +133,9 @@ body {
 		background-color: rgba(255,255,255,.6);
 		padding: 10px 15px;
 		color: $brand-font-color;
+		transition: all 0.35s ease-in-out;
+		border-bottom: 1px solid lightgrey;
+		box-shadow:  0px 4px 7px 0px rgba(158, 152, 158, 0.8);
 	}
 
 	&__image {
@@ -183,6 +214,21 @@ body {
 			width: 100%;
 			object-fit: cover;
 			z-index: 5;
+		}
+
+		&-voices {
+			width: 100%;
+			position: absolute;
+			background: rgba(211, 84, 96,.6);
+			bottom: 0;
+			max-height: 50%;
+			min-height: 30px;
+
+			&__counter {
+				color: $brand-font-color;
+				text-align: center;
+				padding: 5px 0;
+			}
 		}
 
 	}

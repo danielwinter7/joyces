@@ -3,11 +3,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
 
+
 <template name="header">
-    <div class="container">
+
+    <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
             <div id="help-wrapper">
@@ -22,13 +24,20 @@
                 <p>3) Voting-Time: Share your survey with your friends and wait for their respondses!</p>
               </div>
             </div>
+        </div>
+      </div>
+  </div>
 
-          <div class="jo__logo">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="joyces__logo">
             <img src="/images/logo-final.svg" alt="Joyces Logo">
           </div>
         </div>
       </div>
   </div>
+
 </template>
 
 <template name="question_index">
@@ -37,9 +46,9 @@
       <div class="col-md-12">
                  
         <div id="survey-wrapper">
-          <button id="btnCreateSurvey" v-on:click="survey = !survey" type="button" class="waves-effect waves-light btn btn-block btn-large btn-danger"><i class="fa fa-plus fa-fw"></i> Create new survey </button>
+          <button v-on:click="survey = !survey" type="button" class="waves-effect waves-light btn btn-block btn-large btn-danger"><i class="fa fa-plus fa-fw"></i> Create new survey </button>
 
-          <div class="input-field" id="survey-question" v-show="survey" transition="expand">
+          <div class="input-field" v-show="survey" transition="expand">
             <!-- <i class="material-icons prefix">question_answer</i> -->
 
             <form v-on:submit="handleIt">
@@ -69,9 +78,25 @@
 
 <template name="question_list">
 
-  <div class="ql__header">Latest Questions
-    <span v-on:click="survey = !survey"><i class="fa fa-plus-circle fa-fw fa-2x pull-right"></i></span>
+  <div id="surveyplus" class="ql__header">Latest Questions
+    <span v-on:click="surveyplus = !surveyplus"><i class="fa fa-plus-circle fa-fw fa-2x pull-right"></i></span>
+    <div class="input-field" id="survey-question" v-show="surveyplus" transition="fadeplus">
+      <form v-on:submit="handleIt">
+        <span class="error" v-show="!question.title">
+          Enter a question
+        </span>
+        <input placeholder="What do you like to find out?" v-model="question.title" id="question" type="text" name="question" class="validate" length="50" maxlength="50">
+
+        {{> upload_bootstrap contentType='images' fileTypes='.jpg,.png' formData=specificFormData}}
+
+          <div class="col-sm-6 col-sm-offset-3" v-show="question.title">
+          <button name="button" class="waves-effect waves-light btn btn-block btn-success">Create</button>
+        </div>
+      </form>
+    </div>
   </div>
+
+  
 
   <div id="question_list">
     <div v-if="loader">

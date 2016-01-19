@@ -14,7 +14,7 @@ Template.question_detail.onRendered(function () {
 
 	var docHeight = $( document ).height();
 	//30px of question at bottom
-	var imageHeight = (docHeight-30)/2;
+	var imageHeight = (docHeight-38)/2;
 
 	var question = new Vue({
 		el: '#question_detail',
@@ -59,18 +59,24 @@ Template.question_detail.onRendered(function () {
 		  }
 		},
 		methods: {
-			getVoices: function(key) {
-				var uploadId = Uploads.find(key);
-				var uploadVoices = uploadId.voices;
-				console.log(uploadVoices);
-			},
-
-			voting: function(key) {
-				console.log(key);
-				Uploads.update(key, {
+			voting: function(id, voices) {
+				console.log(id + " und " +voices);
+				Uploads.update(id, {
 			        $set: {
-			        	voices: +1,
+			        	voices: voices+1,
 			        	updateAt: new Date()
+			        }
+			    });
+
+			    var total = 0;
+
+				Uploads.find({}, {limit: 2}).map(function(doc) {
+				  total += doc.voices;
+				});
+
+				Uploads.update(id, {
+			        $set: {
+			        	voicesTogeter: total
 			        }
 			    });
 			}
